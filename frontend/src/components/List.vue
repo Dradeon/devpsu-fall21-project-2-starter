@@ -11,6 +11,7 @@
           <thead>
             <th></th>
             <th>Name</th>
+            <th>Description</th>
             <th>Deadline</th>
             <th style="display: none;">Completed?</th>
             <th></th>
@@ -31,6 +32,12 @@
               <td>
                 <input class="on-fly-input"
                        v-model="to_do_list[index].name"
+                       :style="icons_list[index].style"
+                />
+              </td>
+              <td>
+                <input class="on-fly-input"
+                       v-model="to_do_list[index].description"
                        :style="icons_list[index].style"
                 />
               </td>
@@ -162,6 +169,7 @@
       addRow: function () {
         this.to_do_list.push({
           name: '',
+          description:'',
           deadline: '',
           completed: false,
         });

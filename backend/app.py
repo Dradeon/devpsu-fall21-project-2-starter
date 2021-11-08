@@ -11,20 +11,25 @@ CORS(app)
 TO_DO_LIST = [
     {
         'name': 'DevPSU Project 1',
+        'description': 'Github Project',
         'deadline': '10-19-2021',
-        'completed': True,
+        'completed': False,
     },
     {
         'name': 'DevPSU Project 2',
+        'description': 'Vue Frontend Project',
         'deadline': '11-9-2021',
         'completed': False,
     },
     {
         'name': 'CMPSC Final',
+        'description': 'Study a lot for final',
         'deadline': '12-15-2021',
         'completed': False,
     }
 ]
+
+JOURNAL_CONTENT = "Hello there! Begin typing anything in this journal! (It's also resizeable!)"
 
 # Handle Routing for the app
 @app.route('/')
@@ -63,6 +68,23 @@ def index():
         # return default list
         response_dict['message'] = 'List acquired'
 
+    return jsonify(response_dict)
+
+@app.route('/journal', methods = ['GET','POST'])
+def journal_func():
+    global JOURNAL_CONTENT
+    response_dict = {
+        'status': 'success',
+        'message': '',
+        'journal_content': JOURNAL_CONTENT
+    }
+
+    if request.method == 'POST':
+        JOURNAL_CONTENT = request.get_json()[0]
+        response_dict['message'] = 'Contents updated'
+    else:
+        response_dict['message'] = 'Contents acquired'
+    
     return jsonify(response_dict)
 
 # If this file is executed, run the app
