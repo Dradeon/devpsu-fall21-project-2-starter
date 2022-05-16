@@ -1,4 +1,2 @@
-DevPSU Fall 2021
-This is the starter code for project 2 for DevPSU Fall 2021.
-
-Follow the instructions in the pdf on Canvas.
+# To-Do List & Bullet Journal
+This web app is a to-do list and bullet journal where you can write down all of your tasks or anything you want in the journal.
